@@ -24,19 +24,19 @@ export default function Cards(props) {
             
             />
 
-         
-
-
-
-
-         
-
-
-
         } )
         
         }
 
+      <div>
+        <Card
+          name={props.Rick.name}
+          species={props.Rick.species}
+          gender={props.Rick.gender}
+          image={props.Rick.image}
+          onClose={() => window.alert('Emulamos que se cierra la card')}
+        />
+      </div>
 
          
 
