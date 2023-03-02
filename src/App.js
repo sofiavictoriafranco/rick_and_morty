@@ -8,6 +8,7 @@ import Detail from './components/Detail'
 import Form from './components/Form/Form'
 import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
+import Favorites from './components/Favorites'
 
 
 function App () {
@@ -83,6 +84,7 @@ function App () {
 
 <Route path='/Detail/:detailId' element={<Detail/>}/>
 <Route exact path='/' element={<Form login={login} />}/>
+<Route patth='/favorite' element= {<Favorites/>}/>
 
 
 </Routes>

@@ -19,6 +19,10 @@ export default function Nav(props){
             <button>Home</button>
             </Link>
 
+            <Link to='/Favorite'>
+              <button>Favorite</button>
+            </Link>
+
         </div>
     )
 }
