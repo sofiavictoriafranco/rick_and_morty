@@ -9,6 +9,16 @@ export  function Card(props) {
 
    const [isFav, setIsFav] = useState(false);
 
+
+   useEffect(() => {
+      props.myFavorites?.forEach((fav) => {
+         if (fav.id === props.id) {
+            setIsFav(true);
+         }
+      });
+   }, [props.myFavorites]);
+
+
    const handleFavorite = () => {
 
       if ( isFav){
@@ -21,14 +31,7 @@ export  function Card(props) {
    }
 
 
-   useEffect(() => {
-      props.myFavorites.forEach((fav) => {
-         if (fav.id === props.id) {
-            setIsFav(true);
-         }
-      });
-   }, [props.myFavorites]);
-
+   
 
    return (
 

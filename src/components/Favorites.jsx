@@ -1,23 +1,73 @@
 import { connect } from "react-redux"
 import Card from './Card'
+import { useDispatch } from "react-redux"
+import { filterCards, orderCards } from "../redux/actions";
 
 
-const Favorites = ({myFavorites}) => {
+export const Favorites = ({myFavorites}) => {
+
+    const dispatch = useDispatch(); 
+
+    const handleClick = (event) => {
+
+    const { name, value} = event.target;
+
+    switch(name){
+        case "order":
+            return dispatch(orderCards(value))
+
+        case "filter":
+            return dispatch(filterCards(value))
+
+    }
+
+
+
+
+
+    }
+
+
+
 
     return (
 
     <div>
 
-     { myFavorites.length? myFavorites.map((personaje) => {
+
+
+     <div>
+        <select name="order" onChange={handleClick}>
+        <option value="Ascendente">Ascendente</option>
+        <option value="Descendente">Descendente</option>
+            
+        </select>
+
+
+        <select name="filter" onChange={handleClick}>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Genderless">Genderless</option>
+        <option value="Unknown">Unknown</option>
+        </select>
+     </div>
+
+
+
+     { myFavorites?.map((character, index) => {
         <Card>
 
-         <h2>{personaje.name}</h2>
-         <h2>{personaje.species}</h2>
-         <h2>{personaje.gender}</h2>
-         <img  src={personaje.image}  />
-
+            id={character.id}
+            name= {character.name}
+            species={character.species}
+            gender={character.gender}
+            image={character.image}
+            key={index}
         </Card>
-     }) : null }
+     })  }
+
+
+    
 
     </div>
 
@@ -40,7 +90,8 @@ const mapStateToProps = (state) => {
 
 
 
+
 export default connect(
     mapStateToProps,
-    null
+  null
 ) (Favorites);

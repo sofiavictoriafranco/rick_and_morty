@@ -1,18 +1,20 @@
 
-import { AGREGAR_PERSONAJE } from "./actions"
+import { AGREGAR_PERSONAJE, FILTER, ORDER } from "./actions"
 import { ELIMINAR_PERSONAJE } from "./actions"
 import { agregarPersonaje } from "./actions"
 import { eliminarPersonaje } from "./actions"
 
 
+
 const initialState = {
 
-    myFavorites: []
+    myFavorites: [],
+    allCharacters: []
 
 
 }
 
-export  const reducer = (state = initialState, {type, payload}) => {
+ const reducer = (state = initialState, {type, payload}) => {
 
     switch(type){
 
@@ -21,7 +23,8 @@ export  const reducer = (state = initialState, {type, payload}) => {
 
                 ... state,
 
-                myFavorites: [... state.myFavorites, payload]
+                myFavorites: [... state.allCharacters, payload],
+                allCharacters: [... state.allCharacters, payload]
             }
 
             case ELIMINAR_PERSONAJE:
@@ -32,9 +35,27 @@ export  const reducer = (state = initialState, {type, payload}) => {
                 }
 
 
+            case FILTER:
+                return{
+
+                    ... state,
+                    myFavorites: state.allCharacters.filter(character => character.gender === payload )
+
+                }
 
 
+            case ORDER:
 
+             const order = state.allCharacters.sort()
+
+
+                return {
+
+                    ... state,
+                    myFavorites: order
+                }
+
+               
 
             default:
             return {
@@ -42,3 +63,6 @@ export  const reducer = (state = initialState, {type, payload}) => {
             }   
     }
 }
+
+
+export default reducer;
