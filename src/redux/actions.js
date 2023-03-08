@@ -5,11 +5,11 @@ export const ELIMINAR_PERSONAJE = "ELIMINAR_PERSOANJE";
 export const FILTER = "FILTER";
 export const ORDER = "ORDER";
 
-export const agregarPersonaje = (id) => {
+export const agregarPersonaje = (personaje) => {
 
     return {
         type: AGREGAR_PERSONAJE,
-        payload: id
+        payload: personaje
     }
 }
 

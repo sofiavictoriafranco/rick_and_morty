@@ -44,16 +44,19 @@ const initialState = {
                 }
 
 
-            case ORDER:
-
-             const order = state.allCharacters.sort()
-
-
-                return {
-
-                    ... state,
-                    myFavorites: order
-                }
+                case ORDER:
+                    
+                    const sortedFavorites = [...state.myFavorites].sort((a, b) => {
+                      if (payload === "Ascendente") {
+                        return a.id - b.id;
+                      } else {
+                        return b.id - a.id;
+                      }
+                    });
+                    return {
+                      ... state,
+                      myFavorites: sortedFavorites,
+                    };
 
                
 

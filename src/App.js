@@ -84,7 +84,7 @@ function App () {
 
 <Route path='/Detail/:detailId' element={<Detail/>}/>
 <Route exact path='/' element={<Form login={login} />}/>
-<Route patth='/favorite' element= {<Favorites/>}/>
+<Route path='/favorite' element= {<Favorites/>}/>
 
 
 </Routes>

@@ -1,4 +1,4 @@
-import { connect } from "react-redux"
+import { connect } from 'react-redux';
 import Card from './Card'
 import { useDispatch } from "react-redux"
 import { filterCards, orderCards } from "../redux/actions";
@@ -55,7 +55,9 @@ export const Favorites = ({myFavorites}) => {
 
 
      { myFavorites?.map((character, index) => {
-        <Card>
+
+        return(
+        <Card
 
             id={character.id}
             name= {character.name}
@@ -63,7 +65,8 @@ export const Favorites = ({myFavorites}) => {
             gender={character.gender}
             image={character.image}
             key={index}
-        </Card>
+        />
+        )
      })  }
 
 

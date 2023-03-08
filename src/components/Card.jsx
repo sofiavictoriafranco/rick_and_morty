@@ -26,7 +26,7 @@ export  function Card(props) {
          props.eliminarPersonaje(props.id)
       }else {
          setIsFav(true);
-         props.agregarPersonaje(props.id)
+         props.agregarPersonaje(props)
       }
    }
 
@@ -69,7 +69,7 @@ const mapDispatchToProps = (dispatch) => {
 
    return{
 
-      agregarPersonaje: (id) => dispatch(agregarPersonaje(id)),
+      agregarPersonaje: (personaje) => dispatch(agregarPersonaje(personaje)),
 
       eliminarPersonaje: (id) => dispatch(eliminarPersonaje(id))
 
