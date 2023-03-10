@@ -15,16 +15,16 @@ function App () {
 
    const [access, setAccess] = useState(false);
 
-   const username = "sofiavictoriafranco@hotmail.com"; 
-   const password = "hola1234";
+   // const username = "sofiavictoriafranco@hotmail.com"; 
+   // const password = "hola1234";
    const navigate = useNavigate();
 
   const login = (userData) => {
 
-      if (userData.password === password && userData.username === username) {
+      // if (userData.password === password && userData.username === username) {
          setAccess(true);
          navigate('/home');
-      }
+      // }
 
 
    }
@@ -40,7 +40,7 @@ function App () {
 
 
   const onSearch = (character) =>  {
-    fetch(`http://localhost:3001/rickandmorty/character/${character}`)
+    fetch(`http://localhost:3001/rickandmorty/onsearch/${character}`)
        .then((response) => response.json())
        .then((data) => {
           if (data.name) {
