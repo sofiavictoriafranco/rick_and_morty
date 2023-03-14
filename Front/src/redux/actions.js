@@ -1,4 +1,4 @@
-
+import axios from 'axios'
 
 export const AGREGAR_PERSONAJE = "AGREGAR_PERSONAJE";
 export const ELIMINAR_PERSONAJE = "ELIMINAR_PERSOANJE";
@@ -7,17 +7,31 @@ export const ORDER = "ORDER";
 
 export const agregarPersonaje = (personaje) => {
 
-    return {
-        type: AGREGAR_PERSONAJE,
-        payload: personaje
+    return function(dispatch) {
+        axios
+        .post("http://localhost:3001/rickandmorty/fav", personaje)
+        .then(response => {
+            return dispatch ({
+                type: AGREGAR_PERSONAJE,
+                payload: response.data
+            })
+        })
     }
+
 }
 
 export const eliminarPersonaje = (id) => {
 
-    return {
-        type: ELIMINAR_PERSONAJE,
-        payload: id
+    return function(dispatch) {
+        axios
+        .delete(`http://localhost:3001/rickandmorty/fav/${id}`)
+        .then(response => {
+            return dispatch({
+                type: ELIMINAR_PERSONAJE,
+                payload: response.data
+            })
+        })
+
     }
 }
 

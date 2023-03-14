@@ -23,15 +23,15 @@ const initialState = {
 
                 ... state,
 
-                myFavorites: [... state.allCharacters, payload],
-                allCharacters: [... state.allCharacters, payload]
+                myFavorites: payload,
+                allCharacters: payload
             }
 
             case ELIMINAR_PERSONAJE:
                 return{
 
                     ... state,
-                    myFavorites: state.myFavorites.filter(personaje => personaje.id !== payload)
+                    myFavorites: payload
                 }
 
 

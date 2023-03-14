@@ -1,6 +1,9 @@
+
 const axios = require("axios");
 
-const getCharDetail = (res,  id) => {
+const getCharDetail = (req, res) => {
+
+    const {id} = req.params
 
     axios.get(`https://rickandmortyapi.com/api/character/${id}`)
     .then( response => response.data)
@@ -15,14 +18,11 @@ const getCharDetail = (res,  id) => {
             origin: data.origin?.name
         }
 
-        res.writeHead(200, {'Content-Type': 'application/json'})
-        res.end(JSON.stringify(character))
+        res.status(200).json(character)
     })
     .catch((error) => {
-        res.writeHead(500, {'Content-Type': 'text/plain'})
-        res.end('Personaje no encontrado')
+     res.status(500).json({error: error.message})
     })
-
 
 }
 
