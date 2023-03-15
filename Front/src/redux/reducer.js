@@ -1,5 +1,5 @@
 
-import { AGREGAR_PERSONAJE, FILTER, ORDER } from "./actions"
+import { AGREGAR_PERSONAJE, FILTER, GET_FAVORITES, ORDER } from "./actions"
 import { ELIMINAR_PERSONAJE } from "./actions"
 import { agregarPersonaje } from "./actions"
 import { eliminarPersonaje } from "./actions"
@@ -57,6 +57,17 @@ const initialState = {
                       ... state,
                       myFavorites: sortedFavorites,
                     };
+
+                    case GET_FAVORITES:
+
+                    return{
+
+                        ... state,
+                        myFavorites: payload
+                    }
+    
+
+
 
                
 

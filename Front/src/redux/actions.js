@@ -2,35 +2,40 @@ import axios from 'axios'
 
 export const AGREGAR_PERSONAJE = "AGREGAR_PERSONAJE";
 export const ELIMINAR_PERSONAJE = "ELIMINAR_PERSOANJE";
+export const GET_FAVORITES = 'GET_FAVORITES';
 export const FILTER = "FILTER";
 export const ORDER = "ORDER";
 
+
 export const agregarPersonaje = (personaje) => {
+    return async (dispatch) => {
+      try {
+        const response = await axios.post("http://localhost:3001/rickandmorty/fav", personaje);
+        dispatch({
+          type: AGREGAR_PERSONAJE,
+          payload: response.data
+        });
+      } catch (error) {
+        console.log("Error al agregar personaje:", error);
+      }
+    };
+  };
 
-    return function(dispatch) {
-        axios
-        .post("http://localhost:3001/rickandmorty/fav", personaje)
-        .then(response => {
-            return dispatch ({
-                type: AGREGAR_PERSONAJE,
-                payload: response.data
-            })
-        })
-    }
-
-}
 
 export const eliminarPersonaje = (id) => {
 
-    return function(dispatch) {
-        axios
-        .delete(`http://localhost:3001/rickandmorty/fav/${id}`)
-        .then(response => {
-            return dispatch({
+    return async(dispatch) => {
+
+        try{
+        const response = await axios.delete(`http://localhost:3001/rickandmorty/fav/${id}`)
+       
+                dispatch({
                 type: ELIMINAR_PERSONAJE,
                 payload: response.data
             })
-        })
+        }catch(error){
+            console.log("Error al eliminar personaje:", error)
+        }
 
     }
 }
@@ -53,6 +58,22 @@ export const orderCards = (id) => {
         type: ORDER,
         payload: id
     }
+
+}
+
+export const getFavorites = () => {
+
+    return async (dispatch) => {
+        try {
+          const response = await axios.get("http://localhost:3001/rickandmorty/fav");
+          dispatch({
+            type: GET_FAVORITES,
+            payload: response.data
+          });
+        } catch (error) {
+          console.log(error);
+        }
+      };
 
 }
 
