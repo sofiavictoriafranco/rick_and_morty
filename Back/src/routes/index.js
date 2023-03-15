@@ -1,6 +1,6 @@
 const {Router} = require('express')
-const getCharById = require('../controllers/getCharById')
-const getCharDetail = require('../controllers/getCharDetail')
+const  getCharById  = require('../controllers/getCharById')
+const  getCharDetail = require('../controllers/getCharDetail')
 const favs = require('../utils/favs')
 
 const router = Router();
@@ -30,7 +30,7 @@ router.delete('/fav/:id', (req, res) => {
 
     favs = favs.filter(fav => fav.id !== Number(id))
 
-    res.status(200).json(newArray)
+    res.status(200).json(favs)
 
     
 })

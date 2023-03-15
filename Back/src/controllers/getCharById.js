@@ -4,15 +4,15 @@ const getCharById = (req, res) => {
 
     const {id} = req.params
 
-    axios.get(`https://rickandmortyapi.com/api/character/${id}`)
-    .then( response => response.data)
-    .then( data => {
+    axios(`https://rickandmortyapi.com/api/character/${id}`)
+  
+    .then( response => {
         const character = {
-            id: data.id,
-            image: data.image,
-            name: data.name,
-            gender: data.gender,
-            species: data.species
+            id: response.data.id,
+            image: response.data.image,
+            name: response.data.name,
+            gender: response.data.gender,
+            species: response.data.species
         }
 
         res.status(200).json(character)
