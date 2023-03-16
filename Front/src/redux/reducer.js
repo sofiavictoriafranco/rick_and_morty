@@ -58,7 +58,9 @@ const initialState = {
                       myFavorites: sortedFavorites,
                     };
 
-                    case GET_FAVORITES:
+                    
+
+                case GET_FAVORITES:
 
                     return{
 
