@@ -6,7 +6,7 @@ const getCharById = async(req, res) => {
 
     try {
 
-    const response = await axios(`https://rickandmortyapi.com/api/character/${id}`)
+    const response = await axios.get(`https://rickandmortyapi.com/api/character/${id}`)
   
    
         const character = {

@@ -9,7 +9,8 @@ import { eliminarPersonaje } from "./actions"
 const initialState = {
 
     myFavorites: [],
-    allCharacters: []
+    allCharacters: [],
+    errors: {}
 
 
 }
@@ -24,14 +25,16 @@ const initialState = {
                 ... state,
 
                 myFavorites: payload,
-                allCharacters: payload
+                allCharacters: payload,
+                errors: {}
             }
 
             case ELIMINAR_PERSONAJE:
                 return{
 
                     ... state,
-                    myFavorites: payload
+                    myFavorites: payload,
+                    errors: {}
                 }
 
 
@@ -65,8 +68,16 @@ const initialState = {
                     return{
 
                         ... state,
-                        myFavorites: payload
+                        myFavorites: payload,
+                        errors: {}
                     }
+
+                case 'ERROR':
+
+                return {
+                    ... state,
+                    errors: payload
+                }
     
 
 

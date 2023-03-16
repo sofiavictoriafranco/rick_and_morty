@@ -11,12 +11,16 @@ export const agregarPersonaje = (personaje) => {
     return async (dispatch) => {
       try {
         const response = await axios.post("http://localhost:3001/rickandmorty/fav", personaje);
-        dispatch({
+        return dispatch({
           type: AGREGAR_PERSONAJE,
           payload: response.data
         });
       } catch (error) {
-        console.log("Error al agregar personaje:", error);
+        return dispatch({
+          type: 'ERROR',
+          payload: error
+
+        })
       }
     };
   };
@@ -29,12 +33,15 @@ export const eliminarPersonaje = (id) => {
         try{
         const response = await axios.delete(`http://localhost:3001/rickandmorty/fav/${id}`)
        
-                dispatch({
+                return dispatch({
                 type: ELIMINAR_PERSONAJE,
                 payload: response.data
             })
         }catch(error){
-            console.log("Error al eliminar personaje:", error)
+            return dispatch({
+              type: 'ERROR',
+              payload: error
+            })
         }
 
     }
@@ -66,12 +73,15 @@ export const getFavorites = () => {
     return async (dispatch) => {
         try {
           const response = await axios.get("http://localhost:3001/rickandmorty/fav");
-          dispatch({
+          return dispatch({
             type: GET_FAVORITES,
             payload: response.data
           });
         } catch (error) {
-          console.log(error);
+          return dispatch({
+            type: 'ERROR',
+            payload: error
+          })
         }
       };
 

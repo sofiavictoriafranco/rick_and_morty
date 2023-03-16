@@ -2,11 +2,11 @@ const axios = require("axios");
 
 const getCharDetail = async(req, res) => {
 
-    const {id} = req.params
+    const {detailId} = req.params
 
     try{
 
-    const response = axios(`https://rickandmortyapi.com/api/character/${id}`)
+    const response = await axios.get(`https://rickandmortyapi.com/api/character/${detailId}`)
 
     
   
@@ -17,8 +17,8 @@ const getCharDetail = async(req, res) => {
             name: response.data.name,
             gender: response.data.gender,
             species: response.data.species,
-            status: data.status,
-            origin: data.origin?.name
+            status: response.data.status,
+            origin: response.data.origin?.name
         }
 
         res.status(200).json(character)
