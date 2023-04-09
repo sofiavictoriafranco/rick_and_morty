@@ -2,8 +2,11 @@ const {Router} = require('express')
 const  getCharById  = require('../controllers/getCharById')
 const  getCharDetail = require('../controllers/getCharDetail')
 let favs = require('../utils/favs')
+const getAllChars = require ('../controllers/getAllChars')
 
 const router = Router();
+
+router.get('/rickandmorty/allCharacters', getAllChars)
 
 router.get("/onsearch/:id", getCharById)
 
