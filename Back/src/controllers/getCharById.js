@@ -1,4 +1,5 @@
 const axios = require("axios");
+const {favorite} = require('../DB_connection')
 
 const getCharById = async(req, res) => {
 
@@ -6,18 +7,11 @@ const getCharById = async(req, res) => {
 
     try {
 
-    const response = await axios.get(`https://rickandmortyapi.com/api/character/${id}`)
-  
-   
-        const character = {
-            id: response.data.id,
-            image: response.data.image,
-            name: response.data.name,
-            gender: response.data.gender,
-            species: response.data.species
-        }
+        const favorites = await favorite.findAll()
 
-        res.status(200).json(character)
+   
+
+        res.status(200).json(favorites)
    
     }catch (error) { 
      res.status(500).json({error: error.message})

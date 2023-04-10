@@ -2,6 +2,7 @@ require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 const character = require('./models/Character')
+const favorite = require('./models/Favorite')
 
 /*
 EJERCICIO 01
@@ -21,6 +22,7 @@ Debajo de este comentario puedes ejecutar la función de los modelos.
 */
 
 character(sequelize)
+favorite(sequelize)
 
 
 
